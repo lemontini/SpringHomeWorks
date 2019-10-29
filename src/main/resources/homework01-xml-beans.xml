@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="ball" class="com.montini.homework01.xml.entities.Ball" abstract="true"/>
+    <bean id="football" class="com.montini.homework01.xml.model.Football" parent="ball"/>
+
+    <bean id="tShirt" class="com.montini.homework01.xml.model.TShirt" abstract="true"/>
+    <bean id="nationalTeamTShirt" class="com.montini.homework01.xml.model.NationalTeamTShirt" parent="tShirt">
+        <constructor-arg value="Bayern München"/>
+    </bean>
+
+    <bean id="modelMan" class="com.montini.homework01.xml.entities.ModelMan" abstract="true"/>
+    <bean id="movingMan" class="com.montini.homework01.xml.entities.MovingMan" abstract="true" parent="modelMan"/>
+    <bean id="sportsMan" class="com.montini.homework01.xml.entities.SportsMan" abstract="true" parent="movingMan"/>
+    <bean id="ballPlayer" class="com.montini.homework01.xml.entities.BallPlayer" abstract="true" parent="sportsMan"/>
+    <bean id="footballer" class="com.montini.homework01.xml.model.Footballer" parent="ballPlayer" scope="prototype">
+        <constructor-arg value="Johnny from the courtyard league"/>
+    </bean>
+    <bean id="nationalTeamPlayer" class="com.montini.homework01.xml.model.NationalTeamPlayer" parent="footballer" scope="prototype"/>
+</beans>
