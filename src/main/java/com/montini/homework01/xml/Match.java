@@ -26,7 +26,6 @@ public class Match {
         goetze.setName("Mario Götze");
 
         NationalTeamTShirt tShirt = (NationalTeamTShirt) context.getBean("nationalTeamTShirt");
-        // TODO: set tShirt to "Bayern München"
         System.out.println(goetze.wears(tShirt));
         tShirt.displays();
 

@@ -1,23 +1,22 @@
-package com.montini.homework01.annotations;
+package com.montini.homework01.java;
 
-import com.montini.homework01.annotations.model.Football;
-import com.montini.homework01.annotations.model.Footballer;
-import com.montini.homework01.annotations.model.NationalTeamPlayer;
-import com.montini.homework01.annotations.model.NationalTeamTShirt;
+import com.montini.homework01.java.model.Football;
+import com.montini.homework01.java.model.Footballer;
+import com.montini.homework01.java.model.NationalTeamPlayer;
+import com.montini.homework01.java.model.NationalTeamTShirt;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Component
 public class Match {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("homework01-annotations-beans.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        Footballer johnny = context.getBean("johnny", Footballer.class);
+        // why "Footballer johnny = context.getBean(Footballer.class);" is not correct?
+        Footballer johnny = context.getBean("footballer", Footballer.class);
+        johnny.setName("Johnny from the courtyard league");
 
         johnny.run(75);
         johnny.jump(30);
@@ -25,10 +24,10 @@ public class Match {
 
         System.out.printf("\n\n");
 
-        NationalTeamPlayer goetze = context.getBean("goetze", NationalTeamPlayer.class);
-        // goetze.setName("Mario Götze");
+        NationalTeamPlayer goetze = context.getBean(NationalTeamPlayer.class);
+        goetze.setName("Mario Götze");
 
-        NationalTeamTShirt tShirt = context.getBean("bayern", NationalTeamTShirt.class);
+        NationalTeamTShirt tShirt = context.getBean(NationalTeamTShirt.class);
         System.out.println(goetze.wears(tShirt));
         tShirt.displays();
 
@@ -52,6 +51,7 @@ public class Match {
                 return 0;
             }
         });
+
 
         // Runs like a MovingMan
         goetze.run(10);

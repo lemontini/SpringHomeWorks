@@ -1,30 +1,25 @@
-package com.montini.homework01.annotations.model;
+package com.montini.homework01.java.model;
 
-import com.montini.homework01.annotations.entities.Ball;
-import com.montini.homework01.annotations.entities.BallPlayer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.montini.homework01.java.entities.Ball;
+import com.montini.homework01.java.entities.BallPlayer;
+import org.springframework.beans.factory.annotation.Value;
 
-@Component
 public class Footballer implements BallPlayer {
 
-    // vars
-
     static Byte kickCount = 0;
+
     private String name;
-
-    // constructors
-    @Autowired
-    public Footballer(final String name) {
-        this.name = name;
-    }
-
-    // getters and setters
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
+        this.name = name;
+    }
+
+    public Footballer() { }
+    public Footballer(final String name) {
         this.name = name;
     }
 
@@ -51,6 +46,7 @@ public class Footballer implements BallPlayer {
     @Override
     public void run(long time) {
         System.out.println(this.getName() + " is running for " + time + " seconds ");
+
     }
 
     @Override
@@ -58,7 +54,7 @@ public class Footballer implements BallPlayer {
         System.out.println(this.getName() + " jumps " + centimeters + " cm. high. ");
     }
 
-    // Additionally !
+    // Addionally !
     public boolean score() {
 
         System.out.println(this.name + " has just scored " + shoot(new Ball() {
@@ -73,7 +69,7 @@ public class Footballer implements BallPlayer {
         return true;
     }
 
-    // Additionally !
+    // Addionally !
     public boolean score(long meters) {
         System.out.println(this.name + " has just scored " +
                 (shoot(new Football()) + meters) + " meters goal!");

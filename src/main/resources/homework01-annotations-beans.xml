@@ -9,4 +9,21 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="com.montini.homework01.annotations"/>
+
+    <bean id="footballer" class="java.lang.String">
+        <constructor-arg value="noname"/>
+    </bean>
+
+    <bean id="johnny" class="com.montini.homework01.annotations.model.Footballer">
+        <constructor-arg value="Johnny from the courtyard league"/>
+    </bean>
+
+    <bean id="goetze" class="com.montini.homework01.annotations.model.NationalTeamPlayer">
+        <constructor-arg value="Mario Götze"/>
+    </bean>
+
+    <bean id="bayern" class="com.montini.homework01.annotations.model.NationalTeamTShirt">
+        <constructor-arg value="Bayern München"/>
+    </bean>
+
 </beans>
